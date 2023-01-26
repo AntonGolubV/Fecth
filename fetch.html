@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 607px;
+            height: 302px;
+            border: 1px solid black;
+            
+        }
+        .block{
+            width: 150px;
+            height: 100px;
+            border: 1px solid black;
+            display: inline-block;
+            
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+    <script>
+        let container = document.querySelector('.container');
+        let url = `https://random-word-api.herokuapp.com/word?number=10`;
+        fetch(url).then(function (date){
+            return date.json();
+        }).then(date => randWord(date));
+
+        function randWord(res){
+            for(let item of res){
+                let block = document.createElement('div');
+                block.classList.add('block');
+                block.innerText = item;
+                container.append(block);
+            }
+
+        }
+
+       /*  let apiKey = '69eea7577f7bdf59547ca01ebad31937'; 
+  
+ let city = 'Minsk'; 
+  
+ let url = http://api.openweathermap.org/data/2.5/weather?id=15&q=${city}&lang=ru&units=metric&appid=${apiKey}; 
+  
+ let cityRes = document.querySelector('.city'); 
+ let tempRes = document.querySelector('.temp'); 
+ let humidityRes = document.querySelector('.humidity'); 
+ let windRes = document.querySelector('.wind'); 
+ let wiconRes = document.querySelector('#wicon'); 
+  
+  
+  
+  
+ fetch(url).then(function (date){return date.json()}).then(date => showWeather(date)); 
+  
+     function showWeather(res){ 
+         console.log(res); 
+         cityRes.innerText = res.name; 
+         tempRes.innerText = res.main.temp; 
+         humidityRes.innerText = res.main.humidity; 
+         windRes.innerText = res.wind.speed; 
+  
+         let iconCode = res.weather[0].icon; 
+         let iconUrl = http://api.openweathermap.org/img/w/${iconCode}.png; 
+         wiconRes.src = iconUrl; 
+     } */
+    </script>
+</body>
+</html>
